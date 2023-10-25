@@ -33,13 +33,10 @@ public class GameDumbLogic {
         } else if (playerMove.equals("1") && computerMove.equals("2") || playerMove.equals("2") && computerMove.equals("3") || playerMove.equals("3") && computerMove.equals("1")) {
             points[0]++;
             rounds--;
-        } else if (playerMove.equals("2") && computerMove.equals("1") || playerMove.equals("3") && computerMove.equals("2") || playerMove.equals("1") && computerMove.equals("3")) {
+        } else  {
             points[1]++;
             rounds--;
-        } else {
-            System.out.println("Wrong input!");
         }
-
         return points;
     }
 

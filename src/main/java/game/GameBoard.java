@@ -35,20 +35,32 @@ public class GameBoard {
             System.out.println("\nPick your move:");
             move = scanner.nextLine();
 
-            if (move.equals("x") || move.equals("X")) {
-                System.out.println("Score " + points[0] + ":" + points[1]);
-                end = true;
-
-            } else if (move.equals("n") || move.equals("N")) {
-                System.out.println("Restarting the game...");
-                end = true;
-                restart = true;
-
-            } else {
-                System.out.println("Jan Ken Pon!");
-                System.out.println(name + ": " + as.displayMoveName(move) + "   Computer: " + as.displayMoveName(computerMoves.get(as.getRounds() - 1)));
-                points = as.calculatePoints(move, computerMoves.get(as.getRounds() - 1), points);
-                System.out.println("Score " + points[0] + ":" + points[1]);
+            switch (move) {
+                case "x", "X" -> {
+                    System.out.println("Do you really want to exit? Enter 'yes' to confirm.");
+                    move = scanner.nextLine();
+                    if (move.equals("yes") || move.equals("YES")) {
+                        System.out.println("Score " + points[0] + ":" + points[1]);
+                        end = true;
+                    }
+                }
+                case "n", "N" -> {
+                    System.out.println("Do you really want to restart your game? You'll lose all your progress. Enter 'yes' to confirm.");
+                    move = scanner.nextLine();
+                    if (move.equals("yes") || move.equals("YES")) {
+                        System.out.println("Restarting the game...");
+                        end = true;
+                        restart = true;
+                    }
+                }
+                case "1", "2", "3" -> {
+                    System.out.println("Jan Ken Pon!");
+                    System.out.println(name + ": " + as.displayMoveName(move) + "   Computer: " + as.displayMoveName(computerMoves.get(as.getRounds() - 1)));
+                    points = as.calculatePoints(move, computerMoves.get(as.getRounds() - 1), points);
+                    System.out.println("Score " + points[0] + ":" + points[1]);
+                }
+                default ->
+                        System.out.println("Wrong input! Keyboard input: 1 - paper, 2 - rock, 3 - scissors, n/N - new game, a/A - exit");
             }
 
             if (as.getRounds() == 0) {
