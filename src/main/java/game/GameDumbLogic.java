@@ -30,10 +30,10 @@ public class GameDumbLogic {
             points[1]++;
             rounds--;
 
-        } else if (playerMove.equals("1") && computerMove.equals("2") || playerMove.equals("2") && computerMove.equals("3") || playerMove.equals("3") && computerMove.equals("1")) {
+        } else if ((Integer.parseInt(playerMove) + 1) % 3 == Integer.parseInt(computerMove) % 3) {
             points[0]++;
             rounds--;
-        } else  {
+        } else {
             points[1]++;
             rounds--;
         }
