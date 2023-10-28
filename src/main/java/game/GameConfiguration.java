@@ -1,10 +1,10 @@
 package game;
 
-public class Pair {
+public class GameConfiguration {
     private final String name;
     private final int rounds;
 
-    public Pair(String name, int rounds) {
+    public GameConfiguration(String name, int rounds) {
         this.name = name;
         this.rounds = rounds;
     }

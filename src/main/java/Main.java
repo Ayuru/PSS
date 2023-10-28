@@ -1,5 +1,5 @@
 import game.GameBoard;
-import game.Pair;
+import game.GameConfiguration;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,7 +9,7 @@ public class Main {
         while (run) {
             GameBoard game = new GameBoard();
             try {
-                Pair userData = game.intro();
+                GameConfiguration userData = game.intro();
                 run = game.play(userData.getName(), userData.getRounds());
             } catch (Exception e) {
                 System.out.println("Oh no! Something went wrong! Error: " + e + "\nLets try again!\n\n");

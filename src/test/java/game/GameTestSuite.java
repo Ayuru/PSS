@@ -14,11 +14,11 @@ public class GameTestSuite {
     void testCalculatePointsIfDraw() {
         //Given
         GameDumbLogic as = new GameDumbLogic(1);
-        List<String> computerMoves = new ArrayList<>();
-        computerMoves.add("1");
+        List<Move> computerMoves = new ArrayList<>();
+        computerMoves.add(new Paper());
         int[] points = {0, 0};
         //When
-        points = as.calculatePoints("1", computerMoves.get(0), points);
+        points = as.calculatePoints(new Paper(), computerMoves.get(0), points);
         int[] expectedPoints = {1, 1};
         //Then
         assertEquals(expectedPoints[0], points[0]);
@@ -30,11 +30,11 @@ public class GameTestSuite {
     void testCalculatePointsIfVictoryUsingPaper() {
         //Given
         GameDumbLogic as = new GameDumbLogic(1);
-        List<String> computerMoves = new ArrayList<>();
-        computerMoves.add("2");
+        List<Move> computerMoves = new ArrayList<>();
+        computerMoves.add(new Stone());
         int[] points = {2, 1};
         //When
-        points = as.calculatePoints("1", computerMoves.get(0), points);
+        points = as.calculatePoints(new Paper() , computerMoves.get(0), points);
         int[] expectedPoints = {3, 1};
         //Then
         assertEquals(expectedPoints[0], points[0]);
@@ -46,11 +46,11 @@ public class GameTestSuite {
     void testCalculatePointsIfVictoryUsingStone() {
         //Given
         GameDumbLogic as = new GameDumbLogic(1);
-        List<String> computerMoves = new ArrayList<>();
-        computerMoves.add("3");
+        List<Move> computerMoves = new ArrayList<>();
+        computerMoves.add(new Scissors());
         int[] points = {2, 1};
         //When
-        points = as.calculatePoints("2", computerMoves.get(0), points);
+        points = as.calculatePoints(new Stone(), computerMoves.get(0), points);
         int[] expectedPoints = {3, 1};
         //Then
         assertEquals(expectedPoints[0], points[0]);
@@ -62,11 +62,11 @@ public class GameTestSuite {
     void testCalculatePointsIfVictoryUsingScissors() {
         //Given
         GameDumbLogic as = new GameDumbLogic(1);
-        List<String> computerMoves = new ArrayList<>();
-        computerMoves.add("1");
+        List<Move> computerMoves = new ArrayList<>();
+        computerMoves.add(new Scissors());
         int[] points = {2, 1};
         //When
-        points = as.calculatePoints("3", computerMoves.get(0), points);
+        points = as.calculatePoints(new Stone(), computerMoves.get(0), points);
         int[] expectedPoints = {3, 1};
         //Then
         assertEquals(expectedPoints[0], points[0]);
@@ -78,11 +78,11 @@ public class GameTestSuite {
     void testCalculatePointsIfDefeatUsingPaper() {
         //Given
         GameDumbLogic as = new GameDumbLogic(1);
-        List<String> computerMoves = new ArrayList<>();
-        computerMoves.add("3");
+        List<Move> computerMoves = new ArrayList<>();
+        computerMoves.add(new Scissors());
         int[] points = {2, 1};
         //When
-        points = as.calculatePoints("1", computerMoves.get(0), points);
+        points = as.calculatePoints(new Paper(), computerMoves.get(0), points);
         int[] expectedPoints = {2, 2};
         //Then
         assertEquals(expectedPoints[0], points[0]);
@@ -94,11 +94,11 @@ public class GameTestSuite {
     void testCalculatePointsIfDefeatUsingStone() {
         //Given
         GameDumbLogic as = new GameDumbLogic(1);
-        List<String> computerMoves = new ArrayList<>();
-        computerMoves.add("1");
+        List<Move> computerMoves = new ArrayList<>();
+        computerMoves.add(new Paper());
         int[] points = {2, 1};
         //When
-        points = as.calculatePoints("2", computerMoves.get(0), points);
+        points = as.calculatePoints(new Stone(), computerMoves.get(0), points);
         int[] expectedPoints = {2, 2};
         //Then
         assertEquals(expectedPoints[0], points[0]);
@@ -110,11 +110,11 @@ public class GameTestSuite {
     void testCalculatePointsIfDefeatUsingScissors() {
         //Given
         GameDumbLogic as = new GameDumbLogic(1);
-        List<String> computerMoves = new ArrayList<>();
-        computerMoves.add("2");
+        List<Move> computerMoves = new ArrayList<>();
+        computerMoves.add(new Stone());
         int[] points = {2, 1};
         //When
-        points = as.calculatePoints("3", computerMoves.get(0), points);
+        points = as.calculatePoints(new Scissors(), computerMoves.get(0), points);
         int[] expectedPoints = {2, 2};
         //Then
         assertEquals(expectedPoints[0], points[0]);

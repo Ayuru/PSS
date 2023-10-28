@@ -10,27 +10,31 @@ public class GameDumbLogic {
         this.rounds = rounds;
     }
 
-    public List<String> randomized() {
-        List<String> moves = new ArrayList<>();
+    public List<Move> randomized() {
+        List<Move> moves = new ArrayList<>();
         Random generator = new Random();
+        MoveConverter converter = new MoveConverter();
+        String result;
 
         for (int i = 0; i < rounds; i++) {
 
-            moves.add(String.valueOf(generator.nextInt(3) + 1));
+            result = String.valueOf(generator.nextInt(3) + 1);
+            moves.add(converter.convert(result));
         }
+
 
         return moves;
 
     }
 
-    public int[] calculatePoints(String playerMove, String computerMove, int[] points) {
+    public int[] calculatePoints(Move playerMove, Move computerMove, int[] points) {
 
         if (playerMove.equals(computerMove)) {
             points[0]++;
             points[1]++;
             rounds--;
 
-        } else if ((Integer.parseInt(playerMove) + 1) % 3 == Integer.parseInt(computerMove) % 3) {
+        } else if (playerMove.win(computerMove)) {
             points[0]++;
             rounds--;
         } else {
@@ -40,16 +44,9 @@ public class GameDumbLogic {
         return points;
     }
 
-    public String displayMoveName(String move) {
-        Map<String, String> moves = new HashMap<>();
-        moves.put("1", "paper");
-        moves.put("2", "stone");
-        moves.put("3", "scissors");
-
-        return moves.get(move);
-    }
 
     public int getRounds() {
         return rounds;
     }
+
 }
