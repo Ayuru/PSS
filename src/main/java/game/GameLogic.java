@@ -27,18 +27,17 @@ public class GameLogic {
 
     }
 
-    public int[] calculatePoints(Move playerMove, Move computerMove, int[] points) {
+    public Points calculatePoints(Move playerMove, Move computerMove, Points points) {
 
         if (playerMove.equals(computerMove)) {
-            points[0]++;
-            points[1]++;
+            points.calculate(1, 1);
             rounds--;
 
         } else if (playerMove.win(computerMove)) {
-            points[0]++;
+            points.calculate(1, 0);
             rounds--;
         } else {
-            points[1]++;
+            points.calculate(0, 1);
             rounds--;
         }
         return points;

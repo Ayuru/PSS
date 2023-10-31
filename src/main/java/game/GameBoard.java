@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class GameBoard {
 
     private boolean end = false;
-    private int[] points = {0, 0};
+    Points points = new Points();
     private final Scanner scanner = new Scanner(System.in);
 
     public GameConfiguration intro() {
@@ -45,7 +45,7 @@ public class GameBoard {
                     restart = restartCheck();
                 }
                 case "1", "2", "3" -> {
-                    gameplay(name, moveInput, converter, computerMoves, gameLogic);
+                    gamePlay(name, moveInput, converter, computerMoves, gameLogic);
                 }
                 default ->
                         System.out.println("Wrong input! Keyboard input: 1 - paper, 2 - rock, 3 - scissors, n/N - new game, a/A - exit");
@@ -66,7 +66,7 @@ public class GameBoard {
         System.out.println("Do you really want to exit? Enter 'yes' to confirm.");
         String moveInput = scanner.nextLine();
         if (moveInput.equals("yes") || moveInput.equals("YES")) {
-            System.out.println("Score " + points[0] + ":" + points[1]);
+            System.out.println("Score " + points.getPlayerPoints() + ":" + points.getComputerPoints());
             end = true;
         }
     }
@@ -82,12 +82,12 @@ public class GameBoard {
         return end;
     }
 
-    public void gameplay(String name, String moveInput, MoveConverter converter, List<Move> computerMoves, GameLogic gameLogic) {
+    public void gamePlay(String name, String moveInput, MoveConverter converter, List<Move> computerMoves, GameLogic gameLogic) {
         Move move = converter.convert(moveInput);
         System.out.println("Jan Ken Pon!");
         System.out.println(name + ": " + move.getName() + "   Computer: " + computerMoves.get(gameLogic.getRounds() - 1).getName());
         points = gameLogic.calculatePoints(move, computerMoves.get(gameLogic.getRounds() - 1), points);
-        System.out.println("Score " + points[0] + ":" + points[1]);
+        System.out.println("Score " + points.getPlayerPoints() + ":" + points.getComputerPoints());
     }
 
 }

@@ -15,15 +15,15 @@ public class GameTestSuite {
         GameLogic as = new GameLogic(1);
         List<Move> computerMoves = new ArrayList<>();
         computerMoves.add(new Paper());
-        int[] points = {0, 0};
+        Points points = new Points();
+
 
         //When
         points = as.calculatePoints(new Paper(), computerMoves.get(0), points);
-        int[] expectedPoints = {1, 1};
 
         //Then
-        assertEquals(expectedPoints[0], points[0]);
-        assertEquals(expectedPoints[1], points[1]);
+        assertEquals(1, points.getPlayerPoints());
+        assertEquals(1, points.getComputerPoints());
 
     }
 
@@ -33,15 +33,14 @@ public class GameTestSuite {
         GameLogic as = new GameLogic(1);
         List<Move> computerMoves = new ArrayList<>();
         computerMoves.add(new Stone());
-        int[] points = {2, 1};
+        Points points = new Points();
 
         //When
         points = as.calculatePoints(new Paper() , computerMoves.get(0), points);
-        int[] expectedPoints = {3, 1};
 
         //Then
-        assertEquals(expectedPoints[0], points[0]);
-        assertEquals(expectedPoints[1], points[1]);
+        assertEquals(1, points.getPlayerPoints());
+        assertEquals(0, points.getComputerPoints());
 
     }
 
@@ -51,15 +50,14 @@ public class GameTestSuite {
         GameLogic as = new GameLogic(1);
         List<Move> computerMoves = new ArrayList<>();
         computerMoves.add(new Scissors());
-        int[] points = {2, 1};
+        Points points = new Points();
 
         //When
         points = as.calculatePoints(new Stone(), computerMoves.get(0), points);
-        int[] expectedPoints = {3, 1};
 
         //Then
-        assertEquals(expectedPoints[0], points[0]);
-        assertEquals(expectedPoints[1], points[1]);
+        assertEquals(1, points.getPlayerPoints());
+        assertEquals(0, points.getComputerPoints());
 
     }
 
@@ -69,15 +67,14 @@ public class GameTestSuite {
         GameLogic as = new GameLogic(1);
         List<Move> computerMoves = new ArrayList<>();
         computerMoves.add(new Scissors());
-        int[] points = {2, 1};
+        Points points = new Points();
 
         //When
         points = as.calculatePoints(new Stone(), computerMoves.get(0), points);
-        int[] expectedPoints = {3, 1};
 
         //Then
-        assertEquals(expectedPoints[0], points[0]);
-        assertEquals(expectedPoints[1], points[1]);
+        assertEquals(1, points.getPlayerPoints());
+        assertEquals(0, points.getComputerPoints());
 
     }
 
@@ -87,15 +84,14 @@ public class GameTestSuite {
         GameLogic as = new GameLogic(1);
         List<Move> computerMoves = new ArrayList<>();
         computerMoves.add(new Scissors());
-        int[] points = {2, 1};
+        Points points = new Points();
 
         //When
         points = as.calculatePoints(new Paper(), computerMoves.get(0), points);
-        int[] expectedPoints = {2, 2};
 
         //Then
-        assertEquals(expectedPoints[0], points[0]);
-        assertEquals(expectedPoints[1], points[1]);
+        assertEquals(0, points.getPlayerPoints());
+        assertEquals(1, points.getComputerPoints());
 
     }
 
@@ -105,15 +101,14 @@ public class GameTestSuite {
         GameLogic as = new GameLogic(1);
         List<Move> computerMoves = new ArrayList<>();
         computerMoves.add(new Paper());
-        int[] points = {2, 1};
+        Points points = new Points();
 
         //When
         points = as.calculatePoints(new Stone(), computerMoves.get(0), points);
-        int[] expectedPoints = {2, 2};
 
         //Then
-        assertEquals(expectedPoints[0], points[0]);
-        assertEquals(expectedPoints[1], points[1]);
+        assertEquals(0, points.getPlayerPoints());
+        assertEquals(1, points.getComputerPoints());
 
     }
 
@@ -123,15 +118,14 @@ public class GameTestSuite {
         GameLogic as = new GameLogic(1);
         List<Move> computerMoves = new ArrayList<>();
         computerMoves.add(new Stone());
-        int[] points = {2, 1};
+        Points points = new Points();
 
         //When
         points = as.calculatePoints(new Scissors(), computerMoves.get(0), points);
-        int[] expectedPoints = {2, 2};
 
         //Then
-        assertEquals(expectedPoints[0], points[0]);
-        assertEquals(expectedPoints[1], points[1]);
+        assertEquals(0, points.getPlayerPoints());
+        assertEquals(1, points.getComputerPoints());
 
     }
 }
