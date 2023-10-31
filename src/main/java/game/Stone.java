@@ -7,7 +7,7 @@ public class Stone implements Move {
     String name = "stone";
 
     public boolean win(Move move) {
-        return move.getName().equals("scissors");
+        return move instanceof Scissors;
     }
 
     public String getName() {

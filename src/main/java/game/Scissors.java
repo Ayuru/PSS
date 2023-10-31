@@ -4,10 +4,11 @@ import java.util.Objects;
 
 public class Scissors implements Move {
 
-    String name = "scissors";;
+    String name = "scissors";
+    ;
 
     public boolean win(Move move) {
-        return move.getName().equals("paper");
+        return move instanceof Paper;
     }
 
     public String getName() {

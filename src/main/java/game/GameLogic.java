@@ -2,11 +2,11 @@ package game;
 
 import java.util.*;
 
-public class GameDumbLogic {
+public class GameLogic {
 
     private int rounds;
 
-    public GameDumbLogic(int rounds) {
+    public GameLogic(int rounds) {
         this.rounds = rounds;
     }
 
