@@ -9,10 +9,6 @@ public class Points {
         points[1] = points[1] + computer;
     }
 
-    public int[] getPoints() {
-        return points;
-    }
-
     public int getPlayerPoints() {
         return points[0];
     }
