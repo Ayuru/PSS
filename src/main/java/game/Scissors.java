@@ -5,7 +5,6 @@ import java.util.Objects;
 public class Scissors implements Move {
 
     String name = "scissors";
-    ;
 
     public boolean win(Move move) {
         return move instanceof Paper;
