@@ -37,16 +37,12 @@ public class GameBoard {
             moveInput = scanner.nextLine();
 
             switch (moveInput) {
-                case "x", "X" -> {
-                    exitCheck();
-                }
+                case "x", "X" -> exitCheck();
 
-                case "n", "N" -> {
-                    restart = restartCheck();
-                }
-                case "1", "2", "3" -> {
-                    gamePlay(name, moveInput, converter, computerMoves, gameLogic);
-                }
+                case "n", "N" -> restart = restartCheck();
+
+                case "1", "2", "3" -> gamePlay(name, moveInput, converter, computerMoves, gameLogic);
+
                 default ->
                         System.out.println("Wrong input! Keyboard input: 1 - paper, 2 - rock, 3 - scissors, n/N - new game, a/A - exit");
             }
